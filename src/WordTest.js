@@ -8,6 +8,7 @@ class WordTest extends React.Component {
       randomWord: randomWord(),
       guessWord: "",
       message: "",
+      tries: 0,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,12 +31,14 @@ class WordTest extends React.Component {
       ? this.setState({
           message: "Correct!",
           guessWord: "",
-          randomWord: randomWord()
+          randomWord: randomWord(),
+          tries: 0
         })
-      : this.setState({
+      : this.setState(prevState => ({
             message: "Try Again.",
-            guessWord: ""
-        })
+            guessWord: "",
+            tries: prevState.tries + 1
+        }))
   }
   
   render() {
@@ -55,6 +58,7 @@ class WordTest extends React.Component {
         </form>
         <br/>
         <p>{this.state.message}</p>
+          {this.state.tries!==0 && <p>Tries: {this.state.tries}</p>}
       </div>
     )
   }
