@@ -1,5 +1,6 @@
 import React from "react"
 import { randomWord } from "./words"
+import { accentedLetters } from "./accentedLetters"
 
 class WordTest extends React.Component {
   constructor() {
@@ -9,13 +10,23 @@ class WordTest extends React.Component {
       guessWord: "",
       message: "",
       tries: 0,
+      accents: "",
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleAccentClick = this.handleAccentClick.bind(this)
   }
   
   handleChange(event) {
     const {name, value} = event.target
+    const currentLetter = value.slice(-1)
+    accentedLetters[currentLetter]
+      ? this.setState({
+          accents: this.generateAccents(accentedLetters[currentLetter])
+        })
+      : this.setState({
+          accents: ""
+        })
     this.setState({
       [name]: value
     })
@@ -32,13 +43,33 @@ class WordTest extends React.Component {
           message: "Correct!",
           guessWord: "",
           randomWord: randomWord(),
-          tries: 0
+          tries: 0,
+          accents: ""
         })
       : this.setState(prevState => ({
             message: "Try Again.",
             guessWord: "",
-            tries: prevState.tries + 1
+            tries: prevState.tries + 1,
+            accents: ""
         }))
+  }
+  
+  handleAccentClick(event) {
+    const {value} = event.target
+    this.setState(prevState => ({
+      guessWord: prevState.guessWord.replace(/.$/,value)
+    }))
+  }
+  
+  generateAccents(letterAccents) {
+      return letterAccents.map(accent =>
+        <button
+          key={accent}
+          value={accent}
+          onClick={this.handleAccentClick}
+          > {accent}
+        </button>
+      )
   }
   
   render() {
@@ -56,7 +87,7 @@ class WordTest extends React.Component {
           onChange={this.handleChange}
         />
         </form>
-        <br/>
+        <p>{this.state.accents}</p>
         <p>{this.state.message}</p>
           {this.state.tries!==0 && <p>Tries: {this.state.tries}</p>}
       </div>

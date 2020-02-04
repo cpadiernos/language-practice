@@ -2,6 +2,7 @@ import React from 'react'
 import WordTest from './WordTest'
 import { render, fireEvent } from '@testing-library/react'
 import { dictionary } from './words'
+import { accentedLetters } from './accentedLetters'
 
 test('renders given language label', () => {
   const { getByText } = render(<WordTest />)
@@ -99,4 +100,39 @@ test('correct guess shows no tries', () => {
   fireEvent.submit(input)
   const triesMessage = queryByText('Tries')
   expect(triesMessage).toBeNull()
+})
+
+test('typing a letter that can have an accent shows accent options for that letter', () => {
+  const { getByLabelText, getByText } = render(<WordTest />)
+  const input = getByLabelText('guess-input')
+  for (let key in accentedLetters) {
+    fireEvent.change(input, { target: { value: key} })
+    accentedLetters[key].forEach( value => {
+      let option = getByText(value)
+      expect(option).toBeInTheDocument()
+    })
+  }
+})
+
+test('typing a letter that does not have an accent does not show accent options', () => {
+  const { getByLabelText, queryByText } = render(<WordTest />)
+  const input = getByLabelText('guess-input')
+  const letters = [..."bdfghjklmnpqrstvwxyz"]
+  letters.forEach( letter => {
+    fireEvent.change(input, { target: { value: letter} })
+    const accents = ["â", "à", "é", "ê", "è", "ë", "î", "ï", "ô", "û", "ù", "ü", "ç"]
+    accents.forEach( accent => {
+      expect(queryByText(accent)).toBeNull()
+    })
+  })
+})
+
+test('clicking on accent button replaces letter with accented letter', () => {
+  const { getByLabelText, getByText } = render(<WordTest />)
+  let input = getByLabelText('guess-input')
+  fireEvent.change(input, { target: { value: 'a'} })
+  const aAccentButton = getByText("â")
+  fireEvent.click(aAccentButton)
+  input = getByLabelText('guess-input')
+  expect(input.value).toBe("â")
 })
