@@ -46,12 +46,22 @@ class WordTest extends React.Component {
           tries: 0,
           accents: ""
         })
-      : this.setState(prevState => ({
+      : this.state.tries > 4
+        ? this.setState(prevState => ({
+            message: 'Better luck next time - "'
+              + prevState.randomWord.english + '" is "'
+              + prevState.randomWord.french + '"',
+            guessWord: "",
+            randomWord: randomWord(),
+            tries: 0,
+            accents: "",
+          }))
+        : this.setState(prevState => ({
             message: "Try Again.",
             guessWord: "",
             tries: prevState.tries + 1,
             accents: ""
-        }))
+          }))
   }
   
   handleAccentClick(event) {

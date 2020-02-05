@@ -152,3 +152,52 @@ test('a hint is given about the first letter after entering three wrong guesses'
   hintMessage = getByText(hint)
   expect(hintMessage).toBeInTheDocument()
 })
+
+test('answer is given after 5 wrong guesses', () => {
+  const { getByLabelText, getByTestId, getByText } = render(<WordTest />)
+  const input = getByLabelText('guess-input')
+  const givenWord = getByTestId('random-word').textContent
+  const object = dictionary.find( x => x.english === givenWord)
+  const answer = object.french
+  for (let i = 0; i < 6; i++) {
+    fireEvent.submit(input)
+  }
+  const answerMessage = getByText('Better luck next time - "'
+                      + givenWord + '" is "'
+                      + answer + '"')
+  expect(answerMessage).toBeInTheDocument()
+})
+
+test('new word is given after 5 wrong guesses', () => {
+  const { getByTestId, getByLabelText } = render(<WordTest />)
+  const givenWord = getByTestId('random-word').textContent
+  const input = getByLabelText('guess-input')
+  for (let i = 0; i < 6; i++) {
+    fireEvent.submit(input)
+  }
+  const newWord = getByTestId('random-word').textContent
+  expect(newWord).not.toBe(givenWord)
+})
+
+test('tries and accent options are reset after 5 wrong guesses', () => {
+  const { getByLabelText, getByText, queryByText } = render(<WordTest />)
+  const input = getByLabelText('guess-input')
+  for (let i = 0; i < 6; i++) {
+    fireEvent.change(input, { target: { value: 'a'} })
+    fireEvent.submit(input)
+  }
+  const triesMessage = queryByText('Tries:')
+  expect(triesMessage).toBeNull()
+  const accentOption = queryByText('â')
+  expect(accentOption).toBeNull()
+})
+
+test('guess word is reset after 5 wrong guesses', () => {
+  const { getByLabelText } = render(<WordTest />)
+  const input = getByLabelText('guess-input')
+  for (let i = 0; i < 6; i++) {
+    fireEvent.change(input, { targe: { value: 'testword' } })
+    fireEvent.submit(input)
+  }
+  expect(input.value).toBe('')
+})
