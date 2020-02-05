@@ -136,3 +136,19 @@ test('clicking on accent button replaces letter with accented letter', () => {
   input = getByLabelText('guess-input')
   expect(input.value).toBe("â")
 })
+
+test('a hint is given about the first letter after entering three wrong guesses', () => {
+  const { getByLabelText, getByTestId, queryByText, getByText } = render(<WordTest />)
+  const input = getByLabelText('guess-input')
+  const givenWord = getByTestId('random-word').textContent
+  const object = dictionary.find( x => x.english === givenWord)
+  const hintLetter = object.french.charAt(0)
+  const hint = 'Hint: Starts with "' + hintLetter + '"'
+  let hintMessage = queryByText(hint)
+  expect(hintMessage).toBeNull()
+  fireEvent.submit(input)
+  fireEvent.submit(input)
+  fireEvent.submit(input)
+  hintMessage = getByText(hint)
+  expect(hintMessage).toBeInTheDocument()
+})

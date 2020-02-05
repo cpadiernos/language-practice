@@ -90,6 +90,8 @@ class WordTest extends React.Component {
         <p>{this.state.accents}</p>
         <p>{this.state.message}</p>
           {this.state.tries!==0 && <p>Tries: {this.state.tries}</p>}
+          {this.state.tries > 2
+            && <p>Hint: Starts with "{this.state.randomWord.french.charAt(0)}"</p>}
       </div>
     )
   }
