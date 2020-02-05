@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Language Practice - React Web Application
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+* [General Info](#general-info)
+* [Screenshot](#screenshot)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Project Status](#project-status)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
 
-### `npm start`
+## General Info
+This is a web application to practice the 100 most frequently used words in French.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshot
+Coming soon... Gotta make it pretty!
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Technologies
+* JavaScript
+* Node.js 12.13.1
+* npm 6.12.1
 
-### `npm test`
+## Setup
+To run the project on your local machine:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```
+git clone https://github.com/cpadiernos/language-practice.git
+```
 
-### `npm run build`
+2. Go into language-practice folder:
+```
+cd language-practice
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Start the project:
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+4. A broswer window will open. If not, navigate to http://localhost:3000, and you'll see the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Demo: Coming soon...
 
-### `npm run eject`
+Note: if running tests and it's giving you errors, you might need to re-install jest-dom:
+```
+npm install --save @testing-library/jest-dom
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Features
+* Randomized English words that are most frequently used in French
+* Dynamic accent buttons
+* Hints after 3 tries
+* Answer given after 5 tries
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To-dos:
+* Make pretty
+* Make mobile friendly
+* Add section listing all the "trouble" words that need practice
+* Add multiple language options
+* Add function to repeat "trouble" words more often
+* If word is a verb, add links to conjugations -> Conjugation practice application
+* ...
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Project Status
+Currently this project can be used as a bare bones practice for the 100 most frequently used French words. Integration tests are all passing. 100% coverage.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Inspiration
+I love learning languages! I read that the quickest way to start conversing in a language is by learning the 100 most frequently used words.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Contact
+Created by [@cpadiernos](https://www.linkedin.com/in/carolpadiernos/). Feel free to reach out!
