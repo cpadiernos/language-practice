@@ -74,6 +74,7 @@ class WordTest extends React.Component {
   generateAccents(letterAccents) {
       return letterAccents.map(accent =>
         <button
+          className="accent-button"
           key={accent}
           value={accent}
           onClick={this.handleAccentClick}
@@ -85,9 +86,9 @@ class WordTest extends React.Component {
   render() {
     return (
       <div>
-        <h1>English</h1>
-        <h2 data-testid="random-word">{this.state.randomWord.english}</h2>
-        <h1>French</h1>
+        <h2>English</h2>
+        <p data-testid="random-word">{this.state.randomWord.english}</p>
+        <h2>French</h2>
         <form onSubmit={this.handleSubmit}>
         <input
           type="text"

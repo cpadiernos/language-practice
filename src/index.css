@@ -1,13 +1,30 @@
 body {
+  background: url("/nil-castellvi-ZG5_505mUog-unsplash.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inconsolata', monospace;
+}
+h1, h2 {
+  font-family: 'Amatic SC', cursive;
+  padding-top: 5%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 10% 0 10%;
+  padding: 0 5% 0 5%;
+  border-left-style: double;
+  border-right-style: double;
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.accent-button { 
+  border-radius: 50%;
+  background: white;
 }
