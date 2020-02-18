@@ -97,6 +97,7 @@ class WordTest extends React.Component {
           aria-label="guess-input"
           onChange={this.handleChange}
         />
+        <button type="submit">Submit</button>
         </form>
         <p>{this.state.accents}</p>
         <p>{this.state.message}</p>
