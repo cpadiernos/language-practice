@@ -15,7 +15,7 @@
 This is a web application to practice the 100 most frequently used words in French.
 
 ## Screenshot
-Coming soon... Gotta make it pretty!
+![Language Practice Home](./images/language_practice.jpg)
 
 ## Technologies
 * JavaScript
@@ -56,8 +56,6 @@ npm install --save @testing-library/jest-dom
 * Answer given after 5 tries
 
 To-dos:
-* Make pretty
-* Make mobile friendly
 * Add section listing all the "trouble" words that need practice
 * Add multiple language options
 * Add function to repeat "trouble" words more often
@@ -65,7 +63,7 @@ To-dos:
 * ...
 
 ## Project Status
-Currently this project can be used as a bare bones practice for the 100 most frequently used French words. Integration tests are all passing. 100% coverage.
+Integration tests are all passing. 100% coverage.
 
 ## Inspiration
 I love learning languages! I read that the quickest way to start conversing in a language is by learning the 100 most frequently used words.
