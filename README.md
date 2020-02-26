@@ -42,7 +42,7 @@ npm start
 
 4. A broswer window will open. If not, navigate to http://localhost:3000, and you'll see the project.
 
-Demo: Coming soon...
+Demo: [https://language-practice.herokuapp.com/](https://language-practice.herokuapp.com/)
 
 Note: if running tests and it's giving you errors, you might need to re-install jest-dom:
 ```
