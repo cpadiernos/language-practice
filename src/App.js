@@ -4,6 +4,15 @@ import './App.css';
 import WordTest from './WordTest'
 
 class App extends React.Component {
+  componentDidMount() {
+    setTimeout(() => {
+      let width = window.innerWidth
+      let height = window.innerHeight
+      let viewport = document.querySelector("meta[name=viewport]")
+      viewport.setAttribute("content", "height=" + height + ", width=" + width + ", initial-scale=1.0")
+    }, 300)
+  }
+  
   render() {
     return (
       <main>
